@@ -4,7 +4,7 @@
 
 ### Changed
 - Update translations (25.03.2022)
-
+- `ENTER + SHIFT` and `ENTER + CTRL` in the composer do now the same thing: they send or add a newline depending on the `enterKeySends` user preference
 
 ## [1.28.0] - 2022-03-25
 
