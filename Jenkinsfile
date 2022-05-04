@@ -41,6 +41,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying has started'
+                echo 'Blagam unizenie zadzialaj'
             }
             
              post {
