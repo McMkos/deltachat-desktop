@@ -37,7 +37,21 @@ pipeline {
             }
         }
         
-        
-        
+        stage('Deploy') {
+            steps {
+                sh 'docker-compose build test-agent'
+                sh 'docker-compose up -d test-agent'
+            }
+            
+             post {
+            	 success {
+            	 	echo 'Deploying succeded!'
+            	 }
+            	 
+            	 failure {
+            	 	echo 'Deploying failed!'
+            	 }
+            }
+        }
     }
 }
