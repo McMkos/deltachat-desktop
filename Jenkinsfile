@@ -22,6 +22,7 @@ pipeline {
         
         stage('Test') {
             steps {
+            	 echo 'Testing has started'
                 sh 'docker-compose build test-agent'
                 sh 'docker-compose up -d test-agent'
             }
@@ -39,8 +40,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker-compose build test-agent'
-                sh 'docker-compose up -d test-agent'
+                echo 'Deploying has started'
             }
             
              post {
