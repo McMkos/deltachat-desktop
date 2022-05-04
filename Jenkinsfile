@@ -2,20 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
+        
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'docker build -t test-agent'
+                sh 'docker run -it test-agent'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+        
     }
 }
