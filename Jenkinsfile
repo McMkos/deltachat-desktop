@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    environment {     
+    DOCKERHUB_CREDENTIAL S= credentials('mcmkos-dockerhub')     
+} 
 
     stages {
         
@@ -41,7 +45,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying has started'
-                echo 'Blagam unizenie zadzialaj'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker tag build-agent:latest mcmkos/deltachat-desktop:latest'
+                sh 'docker push mcmkos/deltachat-desktop:latest'
             }
             
              post {
@@ -51,6 +57,10 @@ pipeline {
             	 
             	 failure {
             	 	echo 'Deploying failed!'
+            	 }
+            	 
+            	 always {
+            	 	sh 'docker logout'
             	 }
             }
         }
