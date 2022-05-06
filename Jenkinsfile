@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {     
-    DOCKERHUB_CREDENTIAL S= credentials('mcmkos-dockerhub')     
+    DOCKERHUB_CREDENTIALS = credentials('mcmkos-dockerhub')     
 } 
 
     stages {
